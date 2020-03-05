@@ -49,7 +49,7 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="id<?php echo $titulo_header; ?>">Nombre <?php echo $titulo_header; ?></label>
-                                <input type="email" class="form-control" id="id<?php echo $titulo_header; ?>" value="<?php echo $data["nombre_".$titulo_header.""]?>">
+                                <input type="text" class="form-control" id="id<?php echo $titulo_header; ?>" value="<?php echo $data["nombre_".$titulo_header.""]?>">
                             </div>
                             <?php if($total_inputs > 1){ 
                                 $datafac = $res -> ctrlMostrarGeneral("facultades","id_facultad",$data["id_facultad"]); 

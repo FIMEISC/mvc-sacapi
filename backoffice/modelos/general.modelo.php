@@ -82,6 +82,11 @@ class ModeloGeneral{
 		$stmt = null;
 
 	}
+
+
+	static public function mdlAgregar($tabla, $item, $valir){
+		
+	}
 }
 
 ?>

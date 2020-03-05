@@ -28,6 +28,11 @@ class ControladorGeneral{
 		return $res;
 	}
 
+	static public function ctrlAgregar($tabla, $item, $valor){
+		$res = ModeloGeneral::mdlAgregar($tabla, $item, $valor);
+		return $res;
+	}
+
 	static public function ctrlBorrarGeneral($tabla, $item, $valor){
 		$res = ModeloGeneral::mdlBorrarGeneral($tabla, $item, $valor);
 		if($res == "success"){

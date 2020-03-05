@@ -49,7 +49,7 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="id<?php echo $titulo_header; ?>">Nombre <?php echo $titulo_header; ?></label>
-                                <input type="email" class="form-control" id="id<?php echo $titulo_header; ?>" value="<?php echo $data["nombre_".$titulo_header.""]?>">
+                                <input type="text" class="form-control" id="id<?php echo $titulo_header; ?>" value="<?php echo $data["nombre_".$titulo_header.""]?>">
                             </div>
                             <?php if($total_inputs > 1){ 
                                 $datafac = $res -> ctrlMostrarGeneral("facultades","id_facultad",$data["id_facultad"]); 
@@ -67,10 +67,14 @@
                                 </div>
                             <?php }?>
                         </div>
+                        <?php 
+                            $agregarFacultad = new ControladorUsuarios();
+                            $agregarFacultad -> ctrlAgregar($tabla, $item, $valor);
+                        ?>
                         <div class="box-footer">
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
-									<input type="submit" class="btn btn-primary btn-submit" name="Guardar" value="Guardar">
+									<input type="submit" class="btn btn-primary btn-submit" name="Guardar" href='<?php echo $_GET["pagina"];?>/editar/<?php echo $row[0];?>' value="Guardar">
 									<a href="<?php echo $_GET["pagina"];?>" class="btn btn-default btn-reset">Cancelar</a>
 								</div>
 							</div>
