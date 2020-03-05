@@ -86,7 +86,7 @@ class ModeloGeneral{
 	static public function mdlEditar($tabla, $id, $valor){
 
 		$id = mysqli_real_escape_string(Conexion::conectar(), trim($valor));
-		$stmt = mysqli_query(Conexion::conectar(),"DELETE FROM $tabla WHERE $item = '$id'");
+		$stmt = mysqli_query(Conexion::conectar(),"UPDATE $tabla SET nombre_facultad='$valor' WHERE id_facultad='$id'");
 		
 		if($stmt){
 			return "success";

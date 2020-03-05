@@ -10,3 +10,4 @@ RewriteRule ^([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)$ index.php?pagina=$1&subp
 RewriteRule ^([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)/$ index.php?pagina=$1&subpage=$2
 RewriteRule ^([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)$ index.php?pagina=$1&subpage=$2&id=$3
 RewriteRule ^([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)/$ index.php?pagina=$1&subpage=$2&id=$3
+RewriteRule ^([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)/([a-zA-Z0-9-z\-\_]+)/$ index.php?pagina=$1&subpage=$2&id=$3&exito=$4

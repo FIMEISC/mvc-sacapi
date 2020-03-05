@@ -1,18 +1,23 @@
 <?php
+    require_once "../controladores/general.controlador.php";
+    require_once "../modelos/general.modelo.php";
 
-    //VARIABLES
-
-    $id = $_POST['id'];
-    $type = $_POST['tipo'];
-    $value = $_POST['nombre'];
-    
-    $res = new ControladorGeneral();
-
-
-    if($type == "facultades"){
-        $id_name = "id_facultad";
-    }else if ($type == "carreras"){
-        $id_name = "id_carrera";
+    if($_REQUEST['tabla'] == "carreras"){
+        echo "id de la facultad a la que pertenece".$_REQUEST["id_facultad"];
     }
-    $res ->ctrlEditar($id_name, $id_name, $value);
+
+    echo $tabla = $_REQUEST["tabla"];
+    echo $id = $_REQUEST["id"];
+    echo $value = $_REQUEST["nombre"];
+    
+
+    $plantilla = new ControladorGeneral();
+   echo $plantilla -> ctrlEditar($tabla, $id, $value);
+
+    if ($plantilla == "success"){
+        header("location: $_SERVER[HTTP_REFERER]/si");
+    }else{
+        header("location: $_SERVER[HTTP_REFERER]/no");
+    }
+
 ?>
