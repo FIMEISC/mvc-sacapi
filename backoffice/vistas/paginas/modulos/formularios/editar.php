@@ -14,6 +14,12 @@
 
     $data = $res ->ctrlMostrarGeneral($_GET["pagina"],$id_name,$_GET["id"]);
 ?>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
@@ -45,7 +51,7 @@
 		<div class="card">
 			<div class="card-body" style="display: block;">
 				<div class="box-body">
-					<form action="">
+					<form href="javascript:;" onclick="realizaProceso($('#<?php echo $_GET['id']; ?>').val(), $('#tipo').val(), $('#<?php echo $data['nombre_'.$titulo_header]?>').val());return false;">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="id<?php echo $titulo_header; ?>">Nombre <?php echo $titulo_header; ?></label>
@@ -70,7 +76,8 @@
                         <div class="box-footer">
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
-									<input type="submit" class="btn btn-primary btn-submit" name="Guardar" value="Guardar">
+									<input type="hidden" id="tipo" value="<?php echo $_GET["pagina"]?>">
+									<input class="btn btn-primary" type="button"  value="Guardar"/>
 									<a href="<?php echo $_GET["pagina"];?>" class="btn btn-default btn-reset">Cancelar</a>
 								</div>
 							</div>
@@ -84,3 +91,24 @@
 
 	</section>
 </div>
+
+<script>
+	function realizaProceso(tipo, id, nombre){
+			var parametros = {
+					"tipo" : tipo,
+					"id" : id,
+					"nombre" : nombre
+			};
+			$.ajax({
+					data:  parametros, //datos que se envian a traves de ajax
+					url:   'ajax/editar_proces.php', //archivo que recibe la peticion
+					type:  'post', //método de envio
+					beforeSend: function () {
+							$("#box-footer").html("Procesando, espere por favor...");
+					},
+					success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+							$("#box-footer").html(response);
+					}
+			});
+	}
+</script>

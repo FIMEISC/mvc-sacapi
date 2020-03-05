@@ -33,6 +33,11 @@ class ControladorGeneral{
 		return $res;
 	}
 
+	static public function ctrlEditar($tabla, $id, $valor){
+		$res = ModeloGeneral::mdlEditar($tabla, $id, $valor);
+		return $res;
+	}
+
 	static public function ctrlBorrarGeneral($tabla, $item, $valor){
 		$res = ModeloGeneral::mdlBorrarGeneral($tabla, $item, $valor);
 		if($res == "success"){

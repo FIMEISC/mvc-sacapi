@@ -83,6 +83,21 @@ class ModeloGeneral{
 
 	}
 
+	static public function mdlEditar($tabla, $id, $valor){
+
+		$id = mysqli_real_escape_string(Conexion::conectar(), trim($valor));
+		$stmt = mysqli_query(Conexion::conectar(),"DELETE FROM $tabla WHERE $item = '$id'");
+		
+		if($stmt){
+			return "success";
+		}else{
+			return "error";
+		}
+		mysqli_close(Conexion::conectar());
+		$stmt = null;
+
+	}
+
 
 	static public function mdlAgregar($tabla, $item, $valir){
 		
