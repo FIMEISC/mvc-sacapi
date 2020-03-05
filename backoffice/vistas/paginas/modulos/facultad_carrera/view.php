@@ -69,6 +69,20 @@
 								}).then(function(result){if(result.value){}});	
 
 							</script>';
+						}else if($_GET["subpage"] == "exitoe"){
+							echo '<script>
+
+								swal({
+
+									type:"success",
+									title: "¡Modificacion correcta!",
+									text: "¡Los datos se han modificado corrctamente!",
+									showConfirmButton: true,
+									confirmButtonText: "Cerrar"
+
+								}).then(function(result){if(result.value){}});	
+
+							</script>';
 						}
 					?>
 

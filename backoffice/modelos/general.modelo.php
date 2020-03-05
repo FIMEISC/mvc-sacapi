@@ -85,14 +85,19 @@ class ModeloGeneral{
 
 	static public function mdlEditar($tabla, $id, $valor){
 
-		$id = mysqli_real_escape_string(Conexion::conectar(), trim($valor));
-		$stmt = mysqli_query(Conexion::conectar(),"UPDATE $tabla SET nombre_facultad='$valor' WHERE id_facultad='$id'");
+		$id = mysqli_real_escape_string(Conexion::conectar(), trim($id));
+		if($tabla == "facultades"){
+			$stmt = mysqli_query(Conexion::conectar(),"UPDATE $tabla SET nombre_facultad='$valor' WHERE id_facultad='$id'");
+		}else{
+			$stmt = mysqli_query(Conexion::conectar(),"UPDATE $tabla SET nombre_carrera='$valor' WHERE id_carrera='$id'");
+		}
 		
 		if($stmt){
 			return "success";
 		}else{
 			return "error";
 		}
+
 		mysqli_close(Conexion::conectar());
 		$stmt = null;
 

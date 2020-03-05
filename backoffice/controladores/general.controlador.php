@@ -35,7 +35,11 @@ class ControladorGeneral{
 
 	static public function ctrlEditar($tabla, $id, $valor){
 		$res = ModeloGeneral::mdlEditar($tabla, $id, $valor);
-		return $res;
+		if($res == "success"){
+			echo '<script>window.location = "'.ControladorGeneral::ctrRutaBackoffice().''.$tabla.'/exitoe";</script>';
+		}else{
+			echo '<script>window.location = "'.ControladorGeneral::ctrRutaBackoffice().''.$tabla.'/error";</script>';
+		}
 	}
 
 	static public function ctrlBorrarGeneral($tabla, $item, $valor){

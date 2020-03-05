@@ -6,18 +6,11 @@
         echo "id de la facultad a la que pertenece".$_REQUEST["id_facultad"];
     }
 
-    echo $tabla = $_REQUEST["tabla"];
-    echo $id = $_REQUEST["id"];
-    echo $value = $_REQUEST["nombre"];
+    $tabla = $_REQUEST["tabla"];
+    $id = $_REQUEST["id"];
+    $value = $_REQUEST["nombre"];
     
 
     $plantilla = new ControladorGeneral();
-   echo $plantilla -> ctrlEditar($tabla, $id, $value);
-
-    if ($plantilla == "success"){
-        header("location: $_SERVER[HTTP_REFERER]/si");
-    }else{
-        header("location: $_SERVER[HTTP_REFERER]/no");
-    }
-
+    $plantilla -> ctrlEditar($tabla, $id, $value);
 ?>
