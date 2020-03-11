@@ -48,7 +48,7 @@
 
 									type:"success",
 									title: "¡Eliminacion correcta!",
-									text: "¡Los datos se han eliminado corrctamente!",
+									text: "¡Los datos se han eliminado correctamente!",
 									showConfirmButton: true,
 									confirmButtonText: "Cerrar"
 
@@ -76,7 +76,21 @@
 
 									type:"success",
 									title: "¡Modificacion correcta!",
-									text: "¡Los datos se han modificado corrctamente!",
+									text: "¡Los datos se han modificado correctamente!",
+									showConfirmButton: true,
+									confirmButtonText: "Cerrar"
+
+								}).then(function(result){if(result.value){}});	
+
+							</script>';
+						}else if($_GET["subpage"] == "exitoa"){
+							echo '<script>
+
+								swal({
+
+									type:"success",
+									title: "¡Ha sido registrada correctamente!",
+									text: "¡Los datos se han agregado correctamente!",
 									showConfirmButton: true,
 									confirmButtonText: "Cerrar"
 

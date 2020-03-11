@@ -1,4 +1,5 @@
 <!-- Content Wrapper. Contains page content -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
 	<div class="content-header">
@@ -6,7 +7,7 @@
 			<div class="row mb-2">
 				<div class="col-sm-6">
 					<h1 class="m-0 text-dark">Gestión de alumnos
-						<a class="btn btn-outline-success pull-right" href="#" title="Agregar nuevo alumno" data-toggle="tooltip">
+						<a class="btn btn-outline-success pull-right" href="<?php echo $_GET["pagina"]?>/agregar" title="Agregar nuevo alumno" data-toggle="tooltip">
 						<i class="fa fa-plus"></i> Agregar</a>
 					</h1>
 				</div><!-- /.col -->
@@ -28,6 +29,65 @@
 		<div class="card">
 			<div class="card-body" style="display: block;">
 				<div class="box-body">
+				<?php 
+						if($_GET["subpage"] == "exito"){
+							echo '<script>
+
+								swal({
+
+									type:"success",
+									title: "¡Eliminacion correcta!",
+									text: "¡Los datos se han eliminado correctamente!",
+									showConfirmButton: true,
+									confirmButtonText: "Cerrar"
+
+								}).then(function(result){if(result.value){}});	
+
+							</script>';
+						}else if ($_GET["subpage"] == "error"){
+							echo '<script>
+
+								swal({
+
+									type:"error",
+									title: "¡Ocurrio un error!",
+									text: "¡Ha ocurrido un error, por favor vuelva a intentarlo!",
+									showConfirmButton: true,
+									confirmButtonText: "Cerrar"
+
+								}).then(function(result){if(result.value){}});	
+
+							</script>';
+						}else if($_GET["subpage"] == "exitoe"){
+							echo '<script>
+
+								swal({
+
+									type:"success",
+									title: "¡Modificacion correcta!",
+									text: "¡Los datos se han modificado correctamente!",
+									showConfirmButton: true,
+									confirmButtonText: "Cerrar"
+
+								}).then(function(result){if(result.value){}});	
+
+							</script>';
+						}else if($_GET["subpage"] == "exitop"){
+							echo '<script>
+
+								swal({
+
+									type:"success",
+									title: "¡Ha sido registrada correctamente!",
+									text: "¡Los datos se han agregado correctamente!",
+									showConfirmButton: true,
+									confirmButtonText: "Cerrar"
+
+								}).then(function(result){if(result.value){}});	
+
+							</script>';
+						}
+					?>
 					<table id="dataTable" class="table table-sm table-striped table-hover">
 						<thead>
 							<tr>
@@ -39,7 +99,7 @@
 								<th class="center">SEMESTRE</th>
 								<th class="center">GRUPO</th>
 								<th class="center">GENERACION</th>
-								<th class="center">NIVEL</th>
+								<th class="center">PROFESOR INGLES</th>
 								<th></th>
 							</tr>
 						</thead>
@@ -53,7 +113,7 @@
 								<?php 
 									$res_gen = new ControladorGeneral();
 									$result_gen = $res_gen -> ctrlMostrarGeneral("generaciones","id_generacion",$row[11]);
-									$result_nivel = $res_gen -> ctrlMostrarGeneral("niveles","idnivel",$row[12]);
+									$result_nivel = $res_gen -> ctrlMostrarGeneral("profesores","numcontrol",$row[12]);
 									$result_fac = $res_gen -> ctrlMostrarGeneral("facultades","id_facultad",$row[15]);
 
 								?>
@@ -68,18 +128,18 @@
 								
 
 								<td class="center"><?php echo $result_gen['nombre_generacion']; ?></td>
-								<td class="center"><?php echo $result_nivel['nivel']; ?></td>
+								<td class="center"><?php echo $result_nivel['nombreu']; ?></td>
 								<td class="center" width="100">
 									<?php if($row[8]=="activo"){?>
-										<a data-toggle="tooltip" data-placement="top" title="Bloquear" style="margin-right:5px" class="btn btn-warning btn-sm" href="">
+										<!-- <a data-toggle="tooltip" data-placement="top" title="Bloquear" style="margin-right:5px" class="btn btn-warning btn-sm" href="">
 											<i style="color:#fff" class="fas fa-user-lock"></i>
-										</a>
+										</a> -->
 									<?php }else{ ?>
 										<a data-toggle="tooltip" data-placement="top" title="Desbloquear" style="margin-right:5px" class="btn btn-warning btn-sm" href="">
 											<i style="color:#fff" class="fas fa-unlock"></i>
 										</a>
 									<?php } ?>
-										<a data-toggle="tooltip" data-placement="top" title="Editar" style="margin-right:5px" class="btn btn-success btn-sm" href="">
+										<a data-toggle="tooltip" data-placement="top" title="Editar" style="margin-right:5px" class="btn btn-success btn-sm" href="<?php echo $_GET["pagina"]?>/editar/<?php echo $row[0]?>">
 											<i style="color:#free" class="fas fa-edit"></i>
 										</a>
 								</td>

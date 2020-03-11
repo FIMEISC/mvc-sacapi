@@ -106,9 +106,13 @@ $usuario = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
 						$_GET["pagina"] == "tutores"  ||
 						$_GET["pagina"] == "maestros"
 					){
-						
-						include "paginas/modulos/profesores/view.php";
-					
+						if($_GET["subpage"] == "agregar" || 
+							$_GET["subpage"] == "editar" ||
+							$_GET["subpage"] == "eliminar"){
+							include "paginas/modulos/formularios/".$_GET["subpage"].".php";
+						}else{
+							include "paginas/modulos/profesores/view.php";
+						}
 					}else{
 						include "paginas/404.php";
 					}

@@ -5,7 +5,7 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1 class="m-0 text-dark">Gestión de niveles
+					<h1 class="m-0 text-dark">Gestión de grupos de ingles
 						<a class="btn btn-outline-success pull-right" href="niveles/agregar" title="Agregar nuevo nivel" data-toggle="tooltip">
 						<i class="fa fa-plus"></i> Agregar</a>
 					</h1>
@@ -13,7 +13,7 @@
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="inicio">Inicio</a></li>
-						<li class="breadcrumb-item active">Niveles</li>
+						<li class="breadcrumb-item active">Grupos de ingles</li>
 					</ol>
 				</div><!-- /.col -->
 			</div><!-- /.row -->
@@ -31,8 +31,10 @@
 					<table id="dataTable" class="table table-sm table-striped table-hover">
 						<thead>
 							<tr>
-								<th class="center">NIVEL</th>
+								<th class="center">GRUPO</th>
+								<th class="center">SEMESTRE</th>
 								<th class="center">PROFESOR ASIGNADO</th>
+								<th class="center">FACULTAD</th>
 								<th></th>
 							</tr>
 						</thead>
@@ -43,21 +45,28 @@
 								foreach($result as $row){
 
 									$dat = new ControladorGeneral();
-									$data = $dat -> ctrlMostrarGeneral("profesores","numcontrol",$row[2]);
+									$data = $dat -> ctrlMostrarGeneral("profesores","numcontrol",$row[3]);
+									$dataF = $dat -> ctrlMostrarGeneral("facultades","id_facultad",$data["idFacultad"]);
 							?>
 								<tr>
+									<td class="center"><?php echo $row[2]; ?></td>
 									<td class="center"><?php echo $row[1]; ?></td>
 									<td class="center"><?php echo $data['nombreu']; echo " "; echo $data['apellidop']; echo " "; echo $data['apellidom']; ?></td>
+									<td class="center"><?php echo $dataF["nombre_facultad"]; ?></td>
+									<input type="hidden" name="grupoV" value="<?php echo $row[2]; ?>">
+									<input type="hidden" name="semestreV" value="<?php echo $row[1]; ?>">
+									<input type="hidden" name="idProfesorV" value="<?php echo $row[3]; ?>">
+									<input type="hidden" name="idFacultadV" value="<?php echo $data["idFacultad"]; ?>">
 									<td class="center" width="150">
-										<a data-toggle='tooltip' data-placement='top' title='Ver nivel' class='btn btn-success btn-sm' href='niveles/ver'>
+										<a data-toggle='tooltip' data-placement='top' title='Ver nivel' class='btn btn-success btn-sm' href='niveles/ver/<?php echo $row[3]; ?>/<?php echo $row[1]; ?>/<?php echo $row[2]; ?>'>
 											<i style='color:#fff' class='far fa-eye'></i>
 										</a>
-										<a data-toggle='tooltip' data-placement='top' title='Editar nivel' class='btn btn-success btn-sm' href='niveles/editar'>
+										<a data-toggle='tooltip' data-placement='top' title='Editar nivel' class='btn btn-success btn-sm' href='niveles/editar/<?php echo  $row[0]?>'>
 											<i style='color:#fff' class='fas fa-edit'></i>
 										</a>
-										<a data-toggle='tooltip' data-placement='top' title='Eliminar nivel' class='btn btn-danger btn-sm' href='niveles/eliminar'>
+										<!-- <a data-toggle='tooltip' data-placement='top' title='Eliminar nivel' class='btn btn-danger btn-sm' href='niveles/eliminar/<?php echo  $row[0]?>'>
 											<i style='color:#fff' class="far fa-trash-alt"></i>
-										</a>
+										</a> -->
 									</td>
 								</tr>
 							<?php }?>

@@ -120,7 +120,7 @@
 						<li class="nav-item"> <!-- Niveles A-->
 							<a href="<?php echo $ruta_backoffice;?>niveles" class="nav-link">
 								<i class="nav-icon fas fa-layer-group"></i>
-								<p>Niveles</p>
+								<p>Grupos de ingles</p>
 							</a>
 						</li>
 					<?php } ?>

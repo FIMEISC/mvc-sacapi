@@ -58,7 +58,7 @@ Class ControladorUsuarios{
 						$_SESSION['email'] = $respuesta['email'];
 						$_SESSION['foto_perfil'] = $respuesta['foto'];
 						$_SESSION['pass_check'] = $respuesta['pass_ok'];
-						$_SESSION['id_facultad'] =  $respuesta['id_fac_director'];
+						$_SESSION['id_facultad'] =  $respuesta['idfacultad'];
 					
 			 			$ruta = ControladorRuta::ctrRuta();
 
@@ -110,7 +110,7 @@ Class ControladorUsuarios{
 						   	$_SESSION['email'] = $respuesta['email'];
 						   	$_SESSION['foto_perfil'] = $respuesta['foto'];
 						   	$_SESSION['pass_check'] = $respuesta['pass_ok'];
-						   	$_SESSION['id_facultad'] =  $respuesta['id_fac_director'];
+						   	$_SESSION['id_facultad'] =  $respuesta['idFacultad'];
    
 							$ruta = ControladorRuta::ctrRuta();
    
