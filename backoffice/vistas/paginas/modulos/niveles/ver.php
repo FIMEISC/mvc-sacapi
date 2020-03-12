@@ -140,8 +140,8 @@
 										<a data-toggle="tooltip" data-placement="top" title="Editar" style="margin-right:5px" class="btn btn-success btn-sm" href="<?php echo $_GET["pagina"]?>/editar/<?php echo $row[0]?>">
 											<i style="color:#free" class="fas fa-edit"></i>
 										</a>
-                                        <a data-toggle="tooltip" data-placement="top" title="Editar" style="margin-right:5px" class="btn btn-success btn-sm" href="<?php echo $_GET["pagina"]?>/eliminar/<?php echo $row[0]?>">
-											<i style="color:#free" class="fas fa-edit"></i>
+                                        <a data-toggle="tooltip" data-placement="top" title="Eliminar" style="margin-right:5px" class="btn btn-danger btn-sm" href="<?php echo $_GET["pagina"]?>/eliminar/<?php echo $row[0]?>">
+											<i style="color:#free" class="fas fa-trash"></i>
 										</a>
 								</td>
 							</tr>

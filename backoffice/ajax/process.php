@@ -85,8 +85,9 @@
                 $grupo = $_REQUEST["grupo"];
                 $id_nivel = $_REQUEST["id_nivel"];
                 $id = $_REQUEST["id"];
+                $nivel = $_REQUEST["nivel"];
 
-                $query -> ctrlUpdateGrupo($id, $semestre, $grupo, $id_nivel);
+                $query -> ctrlUpdateGrupo($id, $semestre, $grupo, $id_nivel, $nivel);
             }else{
                 if($_REQUEST['tabla'] == "carreras"){
                     echo "id de la facultad a la que pertenece".$_REQUEST["id_facultad"];
@@ -176,8 +177,9 @@
                 $semestre = $_REQUEST["semestre"];
                 $grupo = $_REQUEST["grupo"];
                 $id_nivel = $_REQUEST["id_nivel"];
+                $nivel = $_REQUEST["nivel"];
 
-                $query -> ctrlAgregarGrupo($semestre, $grupo, $id_nivel);
+                $query -> ctrlAgregarGrupo($semestre, $grupo, $id_nivel, $nivel);
             }else{
                 $tabla = $_REQUEST["tabla"];
                 $value = $_REQUEST["nombre"];

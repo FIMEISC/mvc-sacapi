@@ -52,8 +52,8 @@ class ControladorGeneral{
 		}
 	}
 
-	static public function ctrlAgregarGrupo($semestre, $grupo, $idnivel){
-		$res = ModeloGeneral::mdlAgregarGrupo($semestre, $grupo, $idnivel);
+	static public function ctrlAgregarGrupo($semestre, $grupo, $idnivel, $nivel){
+		$res = ModeloGeneral::mdlAgregarGrupo($semestre, $grupo, $idnivel, $nivel);
 		if($res == "success"){
 			echo '<script>window.location = "'.ControladorGeneral::ctrRutaBackoffice().'niveles/exito";</script>';
 		}else{
@@ -61,8 +61,8 @@ class ControladorGeneral{
 		}
 	}
 
-	static public function ctrlUpdateGrupo($id, $semestre, $grupo, $idnivel){
-		$res = ModeloGeneral::mdlUpdateGrupo($id, $semestre, $grupo, $idnivel);
+	static public function ctrlUpdateGrupo($id, $semestre, $grupo, $idnivel, $nivel){
+		$res = ModeloGeneral::mdlUpdateGrupo($id, $semestre, $grupo, $idnivel, $nivel);
 		if($res == "success"){
 			echo '<script>window.location = "'.ControladorGeneral::ctrRutaBackoffice().'niveles/exitou";</script>';
 		}else{
@@ -88,6 +88,14 @@ class ControladorGeneral{
 		}
 	}
 
+	static public function ctrlBorrarAlumnoNivel($tabla, $item){
+		$res = ModeloGeneral::mdlBorrarAlumnoNivel($tabla, $item);
+		if($res == "success"){
+			echo '<script>window.location = "'.ControladorGeneral::ctrRutaBackoffice().'niveles/exitoalum";</script>';
+		}else{
+			echo '<script>window.location = "'.ControladorGeneral::ctrRutaBackoffice().'niveles/error";</script>';
+		}
+	}
 
 	static public function ctrlAgregarProfesor(
 		$tabla, 

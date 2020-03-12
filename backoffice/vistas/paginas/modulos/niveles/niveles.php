@@ -23,7 +23,38 @@
 
 	<!-- Main content -->
 	<section class="content">
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<?php 
+			if($_GET["subpage"] == "exitoalum"){
+				echo '<script>
 
+					swal({
+
+						type:"success",
+						title: "¡Eliminacion correcta!",
+						text: "¡Alumno eliminado correctamente del nivel!",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+
+					}).then(function(result){if(result.value){}});	
+
+				</script>';
+			}else if ($_GET["subpage"] == "error"){
+				echo '<script>
+
+					swal({
+
+						type:"error",
+						title: "¡Ocurrio un error!",
+						text: "¡Ha ocurrido un error, por favor vuelva a intentarlo!",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+
+					}).then(function(result){if(result.value){}});	
+
+				</script>';
+			}
+		?>
 		<!-- Default box -->
 		<div class="card">
 			<div class="card-body" style="display: block;">
@@ -31,8 +62,9 @@
 					<table id="dataTable" class="table table-sm table-striped table-hover">
 						<thead>
 							<tr>
-								<th class="center">GRUPO</th>
 								<th class="center">SEMESTRE</th>
+								<th class="center">GRUPO</th>
+								<th class="center">NIVEL</th>
 								<th class="center">PROFESOR ASIGNADO</th>
 								<th class="center">FACULTAD</th>
 								<th></th>
@@ -45,12 +77,13 @@
 								foreach($result as $row){
 
 									$dat = new ControladorGeneral();
-									$data = $dat -> ctrlMostrarGeneral("profesores","numcontrol",$row[3]);
+									$data = $dat -> ctrlMostrarGeneral("profesores","numcontrol",$row[4]);
 									$dataF = $dat -> ctrlMostrarGeneral("facultades","id_facultad",$data["idFacultad"]);
 							?>
 								<tr>
-									<td class="center"><?php echo $row[2]; ?></td>
 									<td class="center"><?php echo $row[1]; ?></td>
+									<td class="center"><?php echo $row[2]; ?></td>
+									<td class="center"><?php echo $row[3]; ?></td>
 									<td class="center"><?php echo $data['nombreu']; echo " "; echo $data['apellidop']; echo " "; echo $data['apellidom']; ?></td>
 									<td class="center"><?php echo $dataF["nombre_facultad"]; ?></td>
 									<input type="hidden" name="grupoV" value="<?php echo $row[2]; ?>">
@@ -58,7 +91,7 @@
 									<input type="hidden" name="idProfesorV" value="<?php echo $row[3]; ?>">
 									<input type="hidden" name="idFacultadV" value="<?php echo $data["idFacultad"]; ?>">
 									<td class="center" width="150">
-										<a data-toggle='tooltip' data-placement='top' title='Ver nivel' class='btn btn-success btn-sm' href='niveles/ver/<?php echo $row[3]; ?>/<?php echo $row[1]; ?>/<?php echo $row[2]; ?>'>
+										<a data-toggle='tooltip' data-placement='top' title='Ver nivel' class='btn btn-success btn-sm' href='niveles/ver/<?php echo $row[4]; ?>/<?php echo $row[1]; ?>/<?php echo $row[2]; ?>'>
 											<i style='color:#fff' class='far fa-eye'></i>
 										</a>
 										<a data-toggle='tooltip' data-placement='top' title='Editar nivel' class='btn btn-success btn-sm' href='niveles/editar/<?php echo  $row[0]?>'>

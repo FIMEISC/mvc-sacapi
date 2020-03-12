@@ -133,6 +133,20 @@ class ModeloGeneral{
 
 	}
 
+	static public function mdlBorrarAlumnoNivel($tabla, $item){
+
+		$stmt = mysqli_query(Conexion::conectar(),"UPDATE alumnos SET idnivel = 0 WHERE numcuenta = '$item'");
+		
+		if($stmt){
+			return "success";
+		}else{
+			return "error";
+		}
+		mysqli_close(Conexion::conectar());
+		$stmt = null;
+
+	}
+
 	static public function mdlEditar($tabla, $id, $valor){
 
 		$id = mysqli_real_escape_string(Conexion::conectar(), trim($id));
@@ -172,9 +186,9 @@ class ModeloGeneral{
 		$stmt = null;
 	}
 
-	static public function mdlAgregarGrupo($semestre, $grupo, $idnivel){
+	static public function mdlAgregarGrupo($semestre, $grupo, $idnivel, $nivel){
 
-		$stmt = mysqli_query(Conexion::conectar(),"INSERT INTO niveles ( semestre, grupo, numcontrol ) VALUES ( '$semestre', '$grupo', '$idnivel' )");
+		$stmt = mysqli_query(Conexion::conectar(),"INSERT INTO niveles ( semestre, grupo, nivel,numcontrol ) VALUES ( '$semestre', '$grupo', '$nivel','$idnivel' )");
 		
 		if($stmt){
 			return "success";
@@ -186,9 +200,9 @@ class ModeloGeneral{
 		$stmt = null;
 	}
 
-	static public function mdlUpdateGrupo($id, $semestre, $grupo, $idnivel){
+	static public function mdlUpdateGrupo($id, $semestre, $grupo, $idnivel, $nivel){
 
-		$stmt = mysqli_query(Conexion::conectar(),"UPDATE niveles SET semestre = '$semestre', grupo = '$grupo', numcontrol = '$idnivel' WHERE id = '$id'");
+		$stmt = mysqli_query(Conexion::conectar(),"UPDATE niveles SET semestre = '$semestre', grupo = '$grupo', nivel = '$nivel', numcontrol = '$idnivel' WHERE id = '$id'");
 		
 		if($stmt){
 			return "success";

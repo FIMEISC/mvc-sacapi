@@ -319,6 +319,8 @@
 									<option value="E">E</option>
 									<option value="F">F</option>
 									<option value="G">G</option>
+									<option value="H">H</option>
+									<option value="I">I</option>
 								</select>
 							</div>
 						</div>
@@ -345,9 +347,9 @@
 								?>
 									<option value="">Seleccione una opcion</option>
 									<?php foreach($dataPro as $data){ 
-										$dataProR = $res ->ctrlMostrarGeneral("profesores","numcontrol","$data[3]"); 		
+										$dataProR = $res ->ctrlMostrarGeneral("profesores","numcontrol","$data[4]"); 		
 									?>
-										<option value="<?php echo $data[0]; ?>"><?php echo $data[1].$data[2],' | '.$dataProR["nombreu"]." ".$dataProR["apellidop"]." ".$dataProR["apellidom"]; ?></option>
+										<option value="<?php echo $data[4]; ?>"><?php echo $data[1].$data[2],' | '.$dataProR["nombreu"]." ".$dataProR["apellidop"]." ".$dataProR["apellidom"]; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -433,6 +435,26 @@
 											<option value="E">E</option>
 											<option value="F">F</option>
 											<option value="G">G</option>
+											<option value="H">H</option>
+											<option value="I">I</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label">Nivel</label>
+									<div class="col-sm-12">
+										<select class="form-control" name="nivel" required>
+										<option value="">Seleccione una opcion</option>
+											<option value="A1">A1</option>
+											<option value="A2">A2</option>
+											<option value="B1">B1</option>
+											<option value="B1-">B1-</option>
+											<option value="B1+">B1+</option>
+											<option value="B2">B2</option>
+											<option value="B2-">B2-</option>
+											<option value="B2+">B2+</option>
+											<option value="C">C</option>
 										</select>
 									</div>
 								</div>
